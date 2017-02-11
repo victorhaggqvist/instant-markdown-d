@@ -141,13 +141,6 @@ io.sockets.on('connection', function(sock){
 
 
 function onListening() {
-  if (os.platform() === 'win32') {
-    exec('start /b http://localhost:8090', function(error, stdout, stderr){});
-  } else if (os.platform() === 'darwin') {
-    exec('open -g http://localhost:8090', function(error, stdout, stderr){});
-  } else { // assume unix/linux
-    exec('xdg-open http://localhost:8090', function(error, stdout, stderr){});
-  }
   readAllInput(process.stdin, function(body) {
     writeMarkdown(body);
   });
